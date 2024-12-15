@@ -36,4 +36,16 @@ class Queue {
         }
         return temp;
     }
+
+    boolean isEmpty() {
+        return front == null;
+    }
+
+    void displayQueue() {
+        NodeMatchmaking current = front;
+        while (current != null) {
+            System.out.println("Name: " + current.player.name + ", Skill Level: " + current.player.skillLevel);
+            current = current.next;
+        }
+    }
 }
