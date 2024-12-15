@@ -1,4 +1,4 @@
-class Player {
+public class Player {
     String name;
     String email;
     String password;

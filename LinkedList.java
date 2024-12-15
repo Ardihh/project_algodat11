@@ -1,4 +1,4 @@
-class LinkedList {
+public class LinkedList {
     Player head;
 
     void addPlayer(Player player) {
@@ -13,15 +13,15 @@ class LinkedList {
         }
     }
 
-    Player cariPlayer(String email, String password) {
+    public Player findPlayer(String name, String password) {
         Player current = head;
         while (current != null) {
-            if (current.email.equals(email) && current.password.equals(password)) {
-                return current;
+            if (current.name.equals(name) && current.password.equals(password)) {
+                return current; // Pemain ditemukan
             }
             current = current.next;
         }
-        return null;
+        return null; // Pemain tidak ditemukan
     }
 
     void displayPlayers() {
