@@ -28,7 +28,7 @@ public class LinkedList {
         Player current = head;
         while (current != null) {
             System.out.println("Name: " + current.name + ", Email: " + current.email + 
-                               ", Role: " + current.role + ", Skill Level: " + current.skillLevel);
+                               ", Role: " + current.role + ", Skill Level: " + current.Level);
             current = current.next;
         }
     }

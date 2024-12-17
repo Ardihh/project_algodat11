@@ -3,17 +3,17 @@ public class Player {
     String email;
     String password;
     String role;
-    int skillLevel;
+    int Level;
     int totalMain;
     int wins;
     Player next;
 
-    Player(String name, String email, String password, String role, int skillLevel) {
+    Player(String name, String email, String password, String role, int Level) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.skillLevel = skillLevel;
+        this.Level = Level;
         this.totalMain = 0;
         this.wins = 0;
         this.next = null;

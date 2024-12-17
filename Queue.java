@@ -54,7 +54,7 @@ class Queue {
         while (current != null) {
             System.out.println("TEAM");
             System.out.println("Player " + num + ":");
-            System.out.println("Name: " + current.player.name + ", Skill Level: " + current.player.skillLevel);
+            System.out.println("Name: " + current.player.name + ", Skill Level: " + current.player.Level);
             current = current.next;
             num++;
         }
