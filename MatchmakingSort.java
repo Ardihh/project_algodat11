@@ -37,30 +37,51 @@ public class MatchmakingSort {
         } while (swapped);
     }
 
-    public static Player binarySearch(LinkedList list, String name) {
+    public static Player binarySearchByLevel(LinkedList list, int level) {
         if (list.head == null) return null;
-
+    
         int size = getSize(list);
         int left = 0;
         int right = size - 1;
-
+    
         while (left <= right) {
             int mid = left + (right - left) / 2;
             Player midPlayer = getNodeAtIndex(list, mid);
-
-            if (midPlayer.name.equals(name)) {
-                return midPlayer;
+    
+            if (midPlayer.Level == level) {
+                return midPlayer; // Jika level cocok, kembalikan Player
             }
-
-            if (midPlayer.name.compareTo(name) > 0) {
-                right = mid - 1;
+    
+            if (midPlayer.Level > level) {
+                right = mid - 1; // Pindah ke kiri
             } else {
-                left = mid + 1;
+                left = mid + 1; // Pindah ke kanan
             }
         }
-
-        return null;
+        System.out.println();
+        return null; // Jika level tidak ditemukan
     }
+    
+    public Queue linearSearchByLevel(Player player, LinkedList list, int level) {
+        if (list.head == null) {
+            System.out.println("Daftar pemain kosong.");
+            return null;
+        }
+        Queue teams = new Queue();
+        teams.enqueue(player);
+        while (player != null) {
+            if (player.Level == level) {
+                if (teams.total() <= 3) {
+                    teams.enqueue(player);
+                }
+            }
+            player = player.next; // Pindah ke pemain berikutnya
+        }
+        System.out.println();
+        teams.displayQueue();
+        return null; // Jika level tidak ditemukan
+    }
+    
 
     private static int getSize(LinkedList list) {
         int size = 0;
@@ -79,17 +100,8 @@ public class MatchmakingSort {
         }
         return current;
     }
-
-    public static void displayPlayers(LinkedList list) {
-        Player current = list.head;
-        while (current != null) {
-            System.out.println("Name: " + current.name + ", Email: " + current.email + 
-                               ", Role: " + current.role + ", Skill Level: " + current.Level);
-            current = current.next;
-        }
-    }
-
-    static void bubblesort(LinkedList playerList) {
+    
+    public void bubblesort(LinkedList playerList) {
         bubbleSort(playerList);
     }
 }

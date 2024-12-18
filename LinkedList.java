@@ -1,6 +1,18 @@
 public class LinkedList {
     Player head;
 
+    public boolean isEmpty() {
+        return head == null;
+    }
+    int total() {
+        int total = 0;
+        Player curr = head;
+        while (curr != null) {
+            total++;
+            curr = curr.next;
+        }
+        return total;
+    }
     void addPlayer(Player player) {
         if (head == null) {
             head = player;

@@ -12,7 +12,6 @@ class Queue {
 
     NodeMatchmaking front;
     NodeMatchmaking rear;
-    int total = 1;
 
     public void enqueue(Player player) {
         NodeMatchmaking newNode = new NodeMatchmaking(player);
@@ -22,10 +21,15 @@ class Queue {
             rear.next = newNode;
             rear = newNode;
         }
-        total++;
     }
 
     public int total(){
+        NodeMatchmaking curr = front;
+        int total = 0;
+        while (curr == rear) {
+            curr = curr.next;
+            total++;
+        }
         return total;
     }
 
@@ -51,8 +55,8 @@ class Queue {
         if (isEmpty()) {
             System.out.println("Tidak ada player dalam antrian.");
         }
+        System.out.println("TEAM");
         while (current != null) {
-            System.out.println("TEAM");
             System.out.println("Player " + num + ":");
             System.out.println("Name: " + current.player.name + ", Skill Level: " + current.player.Level);
             current = current.next;
