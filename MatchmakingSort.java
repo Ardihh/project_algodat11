@@ -1,5 +1,6 @@
 
-public class MatchmakingUtils {
+
+public class MatchmakingSort {
     public static void bubbleSort(LinkedList list) {
         if (list.head == null) return;
 

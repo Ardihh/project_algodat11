@@ -50,7 +50,7 @@ public class Main {
 
         System.out.println("Pemain sebelum diurutkan :");
         playerList.displayPlayers();
-        MatchmakingUtils.bubblesort(playerList);
+        MatchmakingSort.bubblesort(playerList);
         
         System.out.println("\nPemain setelah diurutkan berdasarkan Skill Level:");
         playerList.displayPlayers();
@@ -98,7 +98,7 @@ public class Main {
 
         
         String searchName = "k";
-        Player foundPlayer = MatchmakingUtils.binarySearch(playerList, searchName);
+        Player foundPlayer = MatchmakingSort.binarySearch(playerList, searchName);
         if (foundPlayer != null) {
             System.out.println("Pemain ditemukan: " + foundPlayer.name);
         } else {
