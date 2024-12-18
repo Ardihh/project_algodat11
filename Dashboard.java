@@ -152,24 +152,28 @@ public class Dashboard {
         System.out.println("=====================(Pilih ChooseRole)======================");
         System.out.println();
         System.out.println("[1] Warrior");
-        System.out.println(
-                "Tank atau damage dealer utama dalam pertarungan. Biasanya berada di garis depan untuk melindungi anggota party lainnya.");
+        System.out.println("Tank atau damage dealer utama dalam pertarungan. \n"+
+                           "Biasanya berada di garis depan untuk melindungi anggota\n"+
+                           "party lainnya.");
         System.out.println("_______________________________________________________");
         System.out.println("[2] Mage");
-        System.out.println(
-                "Damage dealer jarak jauh dengan kemampuan menyerang banyak musuh sekaligus. Mereka seringkali memiliki kemampuan pendukung seperti menyembuhkan atau melindungi teman.");
+        System.out.println("Damage dealer jarak jauh dengan kemampuan menyerang \n"+
+                           "banyak musuh sekaligus. Mereka seringkali memiliki\n"+
+                           "kemampuan pendukung seperti menyembuhkan atau melindungi\n"+
+                           " teman.");
         System.out.println("_______________________________________________________");
         System.out.println("[3] Rogue");
-        System.out.println(
-                "Damage dealer yang gesit dan lincah. Mereka seringkali memiliki kemampuan untuk menyerang dari belakang atau melemahkan musuh.");
+        System.out.println("Damage dealer yang gesit dan lincah. Mereka seringkali\n"+
+                           "memiliki kemampuan untuk menyerang dari belakang atau\n"+
+                           "melemahkan musuh.");
         System.out.println("_______________________________________________________");
         System.out.println("[4] Cleric");
-        System.out.println(
-                "Healer atau support yang bertugas menjaga kesehatan anggota party dan memberikan dukungan dalam pertempuran.");
+        System.out.println("Healer atau support yang bertugas menjaga kesehatan \n"+
+                           "anggota party dan memberikan dukungan dalam pertempuran.");
         System.out.println("_______________________________________________________");
         System.out.println("[5] Ranger");
-        System.out.println(
-                "Damage dealer jarak jauh yang seringkali memiliki kemampuan untuk memanggil hewan atau perangkap.");
+        System.out.println("Damage dealer jarak jauh yang seringkali memiliki \n"+
+                           "kemampuan untuk memanggil hewan atau perangkap.");
         System.out.println();
         System.out.print("Pilih ChooseRole (1-5): ");
         return;
