@@ -5,6 +5,8 @@ public class Dashboard {
     Queue team1 = new Queue();
     LinkedList playerList = new LinkedList();
     static Scanner scanner = new Scanner(System.in);
+    String role = null;
+    int choice = 0;
 
     public void banner() {
         System.out.println("=====================(Welcome To SkillSync)======================");
@@ -14,6 +16,135 @@ public class Dashboard {
     public void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    void warrior() {
+        System.out.println("\t                     .-.                \r\n" + //
+                "\t                    :@@@+               \r\n" + //
+                "\t                    .@@@#:              \r\n" + //
+                "\t                    =@@@@%*:            \r\n" + //
+                "\t                  :@@@@@@@@@#           \r\n" + //
+                "\t                  -@@@@@@@@@@=          \r\n" + //
+                "\t               #: #@@@@@@@@@@@:         \r\n" + //
+                "\t               *:%@-@@@@@@:.#@=         \r\n" + //
+                "\t               #%%+-@@@@@@* #@+         \r\n" + //
+                "\t            .*-@%-#@@@@@@@@*%%          \r\n" + //
+                "\t          :+%@=*. @@@@@@@@@@@-          \r\n" + //
+                "\t      :=*%*=.. =.=@@@@@@@@@@@=          \r\n" + //
+                "\t  -+##*=:       :@@@@@@@@@@@@@+         \r\n" + //
+                "\t                :@@@@*@@@@@@@@@+        \r\n" + //
+                "\t                -@@@* .=#+@@@@%@@*-     \r\n" + //
+                "\t                :@@@*     =@@@%%@@@*.   \r\n" + //
+                "\t                 %@@*      +@@#.%@@+    \r\n" + //
+                "\t                 +@%        =@# .#@+.   \r\n" + //
+                "\t                 +@@         @@.  :+.   \r\n" + //
+                "\t              .=%@@@         %@-    .   \r\n" + //
+                "\t        .:.:-=+********#%%%#+**=-:.. ");
+    }
+
+    void mage() {
+        System.out.println("\t                    .:::  .     \r\n" + //
+                "\t        .:   .+++#@@@@@#-     \r\n" + //
+                "\t       .=+.   :#*%@@@:.       \r\n" + //
+                "\t        **+    =*+:+@-        \r\n" + //
+                "\t        *+.   :.  ..-*.       \r\n" + //
+                "\t        *:   .   :..-:+-      \r\n" + //
+                "\t        *.   -:. =-*%#%@@=    \r\n" + //
+                "\t       :@#=*%@==*@@@@*%%@@=   \r\n" + //
+                "\t       .%%%%@@%#@@@@%%@@@@+   \r\n" + //
+                "\t        @@%#@#%@@%%%@@@@#@=   \r\n" + //
+                "\t       :#@%#@#%%##%#%@@@@@.   \r\n" + //
+                "\t       -+%#@#@@%@@@@#@@@%%    \r\n" + //
+                "\t       ==%#@#@@@@%@@#@@@##    \r\n" + //
+                "\t       +:%#@%@@@@%@@%#@@*=    \r\n" + //
+                "\t       *.-@%@@@@@%@@@*@@*.    \r\n" + //
+                "\t       # :@#@@@@@%@@@*@@=     \r\n" + //
+                "\t       %  @#@@@@@#@@@#@@:     \r\n" + //
+                "\t       *  @%@@@@%#@@@*@@-     \r\n" + //
+                "\t       +  *%#@@##%@@%=@%      \r\n" + //
+                "\t      :=  =%#@@#+@@#@+@%      \r\n" + //
+                "\t      =-  -%%@*%*@%%@+@%-     \r\n" + //
+                "\t      +.  -#@@#%*@*@@*%@@.    \r\n" + //
+                "\t      *   +%%*===-:.+#*--. ");
+    }
+
+    void rogue() {
+        System.out.println("\t                  :-                    \r\n" + //
+                "\t                 *@@%.                  \r\n" + //
+                "\t                :@@%@#                  \r\n" + //
+                "\t               -%@%@@@+:                \r\n" + //
+                "\t            :%@@@@@%%#%@*               \r\n" + //
+                "\t            *%@@@@@@%%%@#.              \r\n" + //
+                "\t            ##@@@@@@@@@@@+              \r\n" + //
+                "\t           =%%*@@@@@@@@%@#:             \r\n" + //
+                "\t          :#%*-%@@@@@@@:*%+             \r\n" + //
+                "\t          *@#==#%@@@@@@:=@#             \r\n" + //
+                "\t         -@= #%%%@@@@@@: *@:            \r\n" + //
+                "\t         %%:.**##%@@@@#: -@-            \r\n" + //
+                "\t        =@#  +@@@@@@@@@= =*.            \r\n" + //
+                "\t      :+=    =@@@@@@%%@@*:              \r\n" + //
+                "\t     -:      *@@@@@@@*%@@%*-            \r\n" + //
+                "\t   ::        *@@@*@@%*=@@++@@*=-.       \r\n" + //
+                "\t             .@@%=*%@@ .+%: *@##%+.     \r\n" + //
+                "\t              %@@#*@@@.  .:  .=*+ #     \r\n" + //
+                "\t              -%@%%%%-          ...     \r\n" + //
+                "\t               -@**@%                   \r\n" + //
+                "\t               .*:*@#  ");
+    }
+
+    void cleric() {
+        System.out.println("\t                   ..         \r\n" + //
+                "\t                 .%@@@=       \r\n" + //
+                "\t  .%:            :@@@@#       \r\n" + //
+                "\t =#@@@-           @@@@.       \r\n" + //
+                "\t   .@*          -%@@@@@#:     \r\n" + //
+                "\t   -%@.       .#@@@@@@@@@@+   \r\n" + //
+                "\t    :@       .@@@@@@@@@@@@@-  \r\n" + //
+                "\t    .@%=.   :@@@@@@@@@@@@@@-  \r\n" + //
+                "\t     +@@@@@%@@@@@@@@@@@@@@@+  \r\n" + //
+                "\t      %-##@@@@@@@@@@@@@@@@@#  \r\n" + //
+                "\t           .:#@@@@@@@@@@@@@*  \r\n" + //
+                "\t             #@@@@@@@@@@@@%   \r\n" + //
+                "\t     :%%%**. %@@@@@@@@@@@@-   \r\n" + //
+                "\t      .-=*#==@@@@@@@@@@@@%    \r\n" + //
+                "\t            .@@@@@@@@@@@@%-.  \r\n" + //
+                "\t            :@@@@@@@@@@@@@:-=:\r\n" + //
+                "\t            -@@@@@@@@@@@@@:   \r\n" + //
+                "\t            =@@@@@@@@@@@@@-   \r\n" + //
+                "\t            +@@@@@@@@@@@@@*   \r\n" + //
+                "\t            %@@@@@@@@@@@@@%   \r\n" + //
+                "\t            @@@@@@@@@@@@@@@.  \r\n" + //
+                "\t           -@@@@@@@@@@@@@@@=  \r\n" + //
+                "\t           .*@@@@@@@@@@@@@@#  \r\n" + //
+                "\t             :@@%##%@@%*=-:   \r\n" + //
+                "\t           -*@#*-   @@+       \r\n" + //
+                "\t            .       =##. ");
+    }
+
+    void ranger() {
+        System.out.println("\t           -                  \r\n" + //
+                "\t         ::.                  \r\n" + //
+                "\t       -:   ..                \r\n" + //
+                "\t     -:      ..               \r\n" + //
+                "\t   .#-         .-%@@#:  *##-  \r\n" + //
+                "\t  .*=.          #@@@@* -=:    \r\n" + //
+                "\t  :%            +#@@%+#-::.   \r\n" + //
+                "\t ::@***#%%++++*##%@@@@@@@@%.  \r\n" + //
+                "\t  :@:::----::--+@@@@@@%=:.    \r\n" + //
+                "\t  :#:          -@@@@@@:       \r\n" + //
+                "\t   =@           +@@@@%        \r\n" + //
+                "\t    :=         .*@@@@@.       \r\n" + //
+                "\t      -.      .:@@@@@@%.      \r\n" + //
+                "\t       .:.  .. +@@@@@@@%      \r\n" + //
+                "\t         .:.   %@@@@@@@@=     \r\n" + //
+                "\t               @@@@@@@@@%     \r\n" + //
+                "\t               @@@@@@@@@@+    \r\n" + //
+                "\t               %@@@@@@@@@@:   \r\n" + //
+                "\t               +@@@@@@@@@@@-  \r\n" + //
+                "\t               =@@@##***@@@-  \r\n" + //
+                "\t               .@@+     :@@=  \r\n" + //
+                "\t                %@-      .@@  \r\n" + //
+                "\t                #@        +@#.");
     }
 
     public void ChooseRole() {
@@ -45,8 +176,6 @@ public class Dashboard {
     }
 
     public void registrasi() {
-        int choice = 0;
-        String role = null;
         System.out.println("=====================(Sign Up)======================");
         System.out.println();
         System.out.print("Masukkan Nama: ");
@@ -115,10 +244,10 @@ public class Dashboard {
             System.out.println("[3] Exit");
             System.out.println();
             System.out.print("Pilih opsi: ");
-            int choice = scanner.nextInt();
+            int pilih = scanner.nextInt();
             scanner.nextLine(); // Consume newline
             clearScreen();
-            switch (choice) {
+            switch (pilih) {
                 case 1:
                     System.out.println("Menunggu pemain...");
                     team1.enqueue(player);
@@ -129,13 +258,31 @@ public class Dashboard {
                 case 2:
                     System.out.println("=====================(Player Statistic)======================");
                     System.out.println();
-                    System.out.println("Email: " + player.email);
-                    System.out.println("Nama: " + player.name);
-                    System.out.println("Role: " + player.role);
-                    System.out.println("Level: " + player.Level);
-                    System.out.println("Total Pertandingan: " + player.totalMain);
-                    System.out.println("Kemenangan: " + player.wins);
-                    System.out.println("Win Rate: " + player.getWinRate() + "%");
+                    switch (choice) {
+                        case 1:
+                            warrior();
+                            break;
+                        case 2:
+                            mage();
+                            break;
+                        case 3:
+                            rogue();
+                            break;
+                        case 4:
+                            cleric();
+                            break;
+                        case 5:
+                            ranger();
+                            break;
+                    }
+                    System.out.println("[+]-------------------------------------------------------[+]\n");
+                    System.out.println("Email              : " + player.email);
+                    System.out.println("Nama               : " + player.name);
+                    System.out.println("Role               : " + player.role);
+                    System.out.println("Level              : " + player.Level);
+                    System.out.println("Total Pertandingan : " + player.totalMain);
+                    System.out.println("Kemenangan         : " + player.wins);
+                    System.out.println("Win Rate           : " + player.getWinRate() + "%");
                     String getAction = scanner.nextLine();
                     if (getAction == "\n") {
                         menuUtama(player);
