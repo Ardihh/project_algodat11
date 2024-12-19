@@ -1,39 +1,46 @@
-import java.util.Scanner;
-public class Team {
+public class TeamTree {
     class TreeNode{
         Player captain;
+        String nama;
         TreeNode left, right;
     
-        TreeNode(Player captain) {
+        TreeNode(Player captain, String nama) {
             this.captain = captain;
-            this.left = this.right = null;
+            this.nama = nama;
+            left = right = null;
         }
     }
 
-    Team 
+    TreeNode root;
+    TeamTree() {
+        root = null;
+    }
     
     public void formTeam(Player player, LinkedList list, Queue playersQueue) {
-        Scanner scanner = new Scanner(System.in);
         MatchmakingSort sorting = new MatchmakingSort();
-        sorting.bubblesort(list);
+        LinkedList teamA = new LinkedList();
+        // sorting.bubblesort(list);
         playersQueue.enqueue(player);
         System.out.println(player.name);
-        // Queue teams = new Queue();
+        Queue teams = new Queue();
         System.out.println("Menunggu pemain lain...");
-        sorting.linearSearchByLevel(player, list, player.Level);
-        String pilihan = scanner.nextLine();
-        scanner.close();
+        // untuk membentuk team dengan level yang sama
+        sorting.linearSearchByLevel(teams, player, list, teamA, player.Level);
+        teams.displayQueue();
+        buildTeamTree(teamA, 0, teamA.total() - 1);
     }
 
+    // masi error
     TreeNode buildTeamTree(LinkedList players, int start, int end) {
         if (start > end) return null;
         int mid = (start + end) / 2;
         Player current = getPlayerAt(players, mid);
-        TreeNode node = new TreeNode(current);
+        TreeNode node = new TreeNode(current, current.name); 
     
         node.left = buildTeamTree(players, start, mid - 1);
-        node.right = buildTeamTree(players, mid + 1, end);
-    
+        node.right = buildTeamTree(players, mid + 1, end); 
+        
+        preOrder(node);
         return node;
     }
     
@@ -46,5 +53,14 @@ public class Team {
             count++;
         }
         return null;
+    }
+
+    public void preOrder(TreeNode root){
+        if (root == null) return;
+        System.out.println("TEAM :");
+        System.out.println("Player " + root.nama);
+        preOrder(root.left);
+        preOrder(root.right);
+        return;
     }
 }

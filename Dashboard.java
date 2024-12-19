@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import Team.TreeNode;
-
 public class Dashboard {
     Player head;
     Queue newQueue = new Queue();
@@ -303,7 +301,7 @@ public class Dashboard {
         newQueue.enqueue(s);
         newQueue.enqueue(t);
         while (!backToDashboard) {
-            clearScreen();
+            // clearScreen();
             System.out.println("=====================(Main Menu)======================");
             System.out.println(player.name);
             System.out.println();
@@ -314,10 +312,9 @@ public class Dashboard {
             System.out.print("Pilih opsi: ");
             int pilih = scanner.nextInt();
             scanner.nextLine();
-            clearScreen();
             switch (pilih) {
                 case 1:
-                    
+                    TeamTree newTeam = new TeamTree();
                     newTeam.formTeam(player, playerList, newQueue);
                     break;
                 case 2:

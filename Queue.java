@@ -23,15 +23,16 @@ class Queue {
         }
     }
 
-    public int total(){
-        NodeMatchmaking curr = front;
-        int total = 0;
-        while (curr == rear) {
-            curr = curr.next;
-            total++;
+    public int total() {
+        int count = 0;
+        NodeMatchmaking current = front; 
+        while (current != null) {
+            count++;
+            current = current.next; 
         }
-        return total;
+        return count;
     }
+    
 
     public Player dequeue() {
         if (front == null) {

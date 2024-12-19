@@ -13,6 +13,17 @@ public class LinkedList {
         }
         return total;
     }
+    public boolean contains(Player target) {
+        Player current = head;
+
+        while (current != null) {
+            if (current.equals(target)) { 
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
     void addPlayer(Player player) {
         if (head == null) {
             head = player;

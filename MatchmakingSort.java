@@ -62,27 +62,27 @@ public class MatchmakingSort {
         return null; // Jika level tidak ditemukan
     }
     
-    public Queue linearSearchByLevel(Player player, LinkedList list, int level) {
+    public Queue linearSearchByLevel(Queue teams, Player player, LinkedList list, LinkedList teamA, int level) {
         if (list.head == null) {
             System.out.println("Daftar pemain kosong.");
             return null;
         }
-        Queue teams = new Queue();
-        teams.enqueue(player);
         while (player != null) {
-            if (player.Level == level) {
-                if (teams.total() <= 3) {
-                    teams.enqueue(player);
+            if (player.Level == level - 1 || player.Level == level || player.Level == level + 1) {
+                teams.enqueue(player);
+                if (teams.total() >= 3) {
+                    break;
                 }
-            }
-            player = player.next; // Pindah ke pemain berikutnya
+                if (!teamA.contains(player)) { // Cek agar tidak ada duplikasi
+                    teamA.addPlayer(player); // Tambahkan pemain ke teamA
+                }
+            } 
+            player = player.next; 
         }
-        System.out.println();
-        teams.displayQueue();
-        return null; // Jika level tidak ditemukan
+        System.out.println("Team berhasil dibentuk!");
+        return teams;
     }
     
-
     private static int getSize(LinkedList list) {
         int size = 0;
         Player current = list.head;
