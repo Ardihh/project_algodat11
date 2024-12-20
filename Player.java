@@ -1,11 +1,12 @@
-public class Player {
+class Player {
     String name;
     String email;
     String password;
     String role;
     int Level;
-    int totalMain;
-    int wins;
+    int currentHP;
+    int totalMain; 
+    int wins; 
     Player next;
 
     Player(String name, String email, String password, String role, int Level) {
@@ -14,6 +15,7 @@ public class Player {
         this.password = password;
         this.role = role;
         this.Level = Level;
+        this.currentHP = Level * 10;
         this.totalMain = 0;
         this.wins = 0;
         this.next = null;
