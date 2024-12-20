@@ -49,17 +49,17 @@ public class MatchmakingSort {
             Player midPlayer = getNodeAtIndex(list, mid);
     
             if (midPlayer.Level == level) {
-                return midPlayer; // Jika level cocok, kembalikan Player
+                return midPlayer; 
             }
     
             if (midPlayer.Level > level) {
-                right = mid - 1; // Pindah ke kiri
+                right = mid - 1; 
             } else {
-                left = mid + 1; // Pindah ke kanan
+                left = mid + 1; 
             }
         }
         System.out.println();
-        return null; // Jika level tidak ditemukan
+        return null; 
     }
     
     public Queue linearSearchByLevel(Queue teams, Player player, LinkedList list, LinkedList teamA, int level) {
@@ -73,8 +73,8 @@ public class MatchmakingSort {
                 if (teams.total() >= 3) {
                     break;
                 }
-                if (!teamA.contains(player)) { // Cek agar tidak ada duplikasi
-                    teamA.addPlayer(player); // Tambahkan pemain ke teamA
+                if (!teamA.contains(player)) { 
+                    teamA.addPlayer(player); 
                 }
             } 
             player = player.next; 

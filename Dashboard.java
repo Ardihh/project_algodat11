@@ -301,7 +301,7 @@ public class Dashboard {
         newQueue.enqueue(s);
         newQueue.enqueue(t);
         while (!backToDashboard) {
-            // clearScreen();
+            clearScreen();
             System.out.println("=====================(Main Menu)======================");
             System.out.println(player.name);
             System.out.println();

@@ -19,7 +19,6 @@ public class TeamTree {
     public void formTeam(Player player, LinkedList list, Queue playersQueue) {
         MatchmakingSort sorting = new MatchmakingSort();
         LinkedList teamA = new LinkedList();
-        // sorting.bubblesort(list);
         playersQueue.enqueue(player);
         System.out.println(player.name);
         Queue teams = new Queue();

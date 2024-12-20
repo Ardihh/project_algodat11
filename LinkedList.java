@@ -40,11 +40,11 @@ public class LinkedList {
         Player current = head;
         while (current != null) {
             if (current.name.equals(name) && current.password.equals(password)) {
-                return current; // Pemain ditemukan
+                return current; 
             }
             current = current.next;
         }
-        return null; // Pemain tidak ditemukan
+        return null; 
     }
 
     void displayPlayers() {
