@@ -1,5 +1,3 @@
-
-
 public class MatchmakingSort {
     public static void bubbleSort(LinkedList list) {
         if (list.head == null) return;
@@ -72,9 +70,6 @@ public class MatchmakingSort {
                 teams.enqueue(player);
                 if (teams.total() >= 3) {
                     break;
-                }
-                if (!teamA.contains(player)) { 
-                    teamA.addPlayer(player); 
                 }
             } 
             player = player.next; 

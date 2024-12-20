@@ -26,7 +26,10 @@ public class TeamTree {
         // untuk membentuk team dengan level yang sama
         sorting.linearSearchByLevel(teams, player, list, teamA, player.Level);
         teams.displayQueue();
-        buildTeamTree(teamA, 0, teamA.total() - 1);
+        LinkedList listbaru = new LinkedList();
+        // teamA = teams.insertToList(listbaru);
+        // teamA.displayPlayers();
+        // buildTeamTree(teamA, 0, teamA.total() - 1);
     }
 
     // masi error

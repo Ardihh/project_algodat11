@@ -5,6 +5,7 @@ public class Dashboard {
     Queue newQueue = new Queue();
     static Scanner scanner = new Scanner(System.in);
     String role = null;
+    int index = 0;
     int choice = 0;
 
     public void banner() {
@@ -146,36 +147,58 @@ public class Dashboard {
                 "\t                #@        +@#.");
     }
 
-    public void ChooseRole() {
+    public String ChooseRole() {
         clearScreen();
-        System.out.println("=====================(Pilih ChooseRole)======================");
-        System.out.println();
-        System.out.println("[1] Warrior");
-        System.out.println("Tank atau damage dealer utama dalam pertarungan. \n"+
-                           "Biasanya berada di garis depan untuk melindungi anggota\n"+
-                           "party lainnya.");
-        System.out.println("_______________________________________________________");
-        System.out.println("[2] Mage");
-        System.out.println("Damage dealer jarak jauh dengan kemampuan menyerang \n"+
-                           "banyak musuh sekaligus. Mereka seringkali memiliki\n"+
-                           "kemampuan pendukung seperti menyembuhkan atau melindungi\n"+
-                           " teman.");
-        System.out.println("_______________________________________________________");
-        System.out.println("[3] Rogue");
-        System.out.println("Damage dealer yang gesit dan lincah. Mereka seringkali\n"+
-                           "memiliki kemampuan untuk menyerang dari belakang atau\n"+
-                           "melemahkan musuh.");
-        System.out.println("_______________________________________________________");
-        System.out.println("[4] Cleric");
-        System.out.println("Healer atau support yang bertugas menjaga kesehatan \n"+
-                           "anggota party dan memberikan dukungan dalam pertempuran.");
-        System.out.println("_______________________________________________________");
-        System.out.println("[5] Ranger");
-        System.out.println("Damage dealer jarak jauh yang seringkali memiliki \n"+
-                           "kemampuan untuk memanggil hewan atau perangkap.");
-        System.out.println();
-        System.out.print("Pilih ChooseRole (1-5): ");
-        return;
+        index = 1;
+        role newRole = new role();
+        String getAction = null;
+        while (true) {
+            clearScreen();
+            switch (index) {
+                case 1:
+                    newRole.warriorIcon();
+                    break;
+                case 2:
+                    newRole.mageIcon();
+                    break;
+                case 3:
+                    newRole.rogueIcon();
+                    break;
+                case 4:
+                    newRole.clericIcon();
+                    break;
+                case 5:
+                    newRole.rangerIcon();
+                    break;
+            }
+            System.out.println();
+            System.out.println("- ketik A/a + enter untuk ke pilihan sebelumnya");
+            System.out.println("- ketik D/d + enter untuk ke pilihan selanjutnya");
+            System.out.println("- ketik yes + enter untuk memilih role.");
+            System.out.print("pilih: ");
+            getAction = scanner.nextLine();
+            clearScreen();
+            if (getAction.equalsIgnoreCase("yes")) {
+                switch (index) {
+                    case 1:
+                    return "Warrior";
+                    case 2:
+                    return "Mage";
+                    case 3:
+                    return "Rogue";
+                    case 4:
+                    return "Cleric";
+                    case 5:
+                    return "Ranger";
+                }
+            } else if (getAction.equalsIgnoreCase("A")) {
+                index = (index == 1) ? 5 : index - 1;
+            } else if (getAction.equalsIgnoreCase("D")) {
+                index = (index == 5) ? 1 : index + 1;
+            } else {
+                System.out.println("Input tidak valid, coba lagi!");
+            }
+        }
     }
 
     public void registrasi(LinkedList playerList) {
@@ -188,28 +211,7 @@ public class Dashboard {
         System.out.print("Masukkan Password: ");
         String password = scanner.nextLine();
         System.out.println("Pilih ChooseRole: ");
-        ChooseRole();
-        choice = scanner.nextInt();
-        scanner.nextLine();
-        switch (choice) {
-            case 1:
-                role = "Warrior";
-                break;
-            case 2:
-                role = "Mage";
-                break;
-            case 3:
-                role = "Rogue";
-                break;
-            case 4:
-                role = "Cleric";
-                break;
-            case 5:
-                role = "Ranger";
-                break;
-            default:
-                System.out.println("Pilihan tidak valid.");
-        }
+        role = ChooseRole();
         int level = 1;
         playerList.addPlayer(new Player(name, email, password, role, level));
         System.out.println("Registrasi Berhasil! Anda sekarang dapat login.");
@@ -237,6 +239,11 @@ public class Dashboard {
 
     public void menuUtama(Player player, LinkedList playerList) {
         boolean backToDashboard = false;
+        if (player.role.equalsIgnoreCase("Warrior")) choice = 1;
+        else if (player.role.equalsIgnoreCase("Mage")) choice = 2;
+        else if (player.role.equalsIgnoreCase("Rogue")) choice = 3;
+        else if (player.role.equalsIgnoreCase("Cleric")) choice = 4;
+        else if (player.role.equalsIgnoreCase("Ranger")) choice = 5;
         // menambahkan player ke list dan queue
         Player a = new Player("a", "a@gmail.com", "123", "Mage", 1);
         Player b = new Player("b", "b@gmail.com", "123", "Warrior", 2);
@@ -301,7 +308,7 @@ public class Dashboard {
         newQueue.enqueue(s);
         newQueue.enqueue(t);
         while (!backToDashboard) {
-            clearScreen();
+            // clearScreen();
             System.out.println("=====================(Main Menu)======================");
             System.out.println(player.name);
             System.out.println();
@@ -318,6 +325,7 @@ public class Dashboard {
                     newTeam.formTeam(player, playerList, newQueue);
                     break;
                 case 2:
+                    clearScreen();
                     System.out.println("=====================(Player Statistic)======================");
                     System.out.println();
                     switch (choice) {
