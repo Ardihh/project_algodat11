@@ -64,16 +64,4 @@ class Queue {
             num++;
         }
     }
-
-    public LinkedList insertToList(LinkedList list) {
-        NodeMatchmaking current = front;
-        if (isEmpty()) {
-            return list;
-        }
-        while (current != null) {
-            list.addPlayer(current.player);
-            current = current.next;
-        }
-        return list;
-    }
 }

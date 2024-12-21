@@ -37,7 +37,6 @@ public class MatchmakingSort {
 
     public static Player binarySearchByLevel(LinkedList list, int level) {
         if (list.head == null) return null;
-    
         int size = getSize(list);
         int left = 0;
         int right = size - 1;
@@ -60,7 +59,7 @@ public class MatchmakingSort {
         return null; 
     }
     
-    public Queue linearSearchByLevel(Queue teams, Player player, LinkedList list, LinkedList teamA, int level) {
+    public Queue linearSearchByLevel(Queue teams, Player player, LinkedList list, int level) {
         if (list.head == null) {
             System.out.println("Daftar pemain kosong.");
             return null;
@@ -76,6 +75,15 @@ public class MatchmakingSort {
         }
         System.out.println("Team berhasil dibentuk!");
         return teams;
+    }
+
+    public LinkedList formTeams(LinkedList teamA, Player player, Queue teams) {
+        teamA.displayPlayers();
+        while (player != null) {
+            teamA.addPlayer(player);
+            player = player.next; 
+        }
+        return teamA;
     }
     
     private static int getSize(LinkedList list) {

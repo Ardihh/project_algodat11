@@ -49,6 +49,9 @@ public class LinkedList {
 
     void displayPlayers() {
         Player current = head;
+        if (head == null) {
+            System.out.println("tidak ada pemain");
+        }
         while (current != null) {
             System.out.println("Name: " + current.name + ", Email: " + current.email + 
                                ", Role: " + current.role + ", Skill Level: " + current.Level);

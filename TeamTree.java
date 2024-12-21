@@ -24,39 +24,12 @@ public class TeamTree {
         Queue teams = new Queue();
         System.out.println("Menunggu pemain lain...");
         // untuk membentuk team dengan level yang sama
-        sorting.linearSearchByLevel(teams, player, list, teamA, player.Level);
-        teams.displayQueue();
-        LinkedList listbaru = new LinkedList();
-        // teamA = teams.insertToList(listbaru);
-        // teamA.displayPlayers();
-        // buildTeamTree(teamA, 0, teamA.total() - 1);
+        sorting.linearSearchByLevel(teams, player, list, player.Level);
+        sorting.formTeams(teamA, player, teams);
     }
 
-    // masi error
-    TreeNode buildTeamTree(LinkedList players, int start, int end) {
-        if (start > end) return null;
-        int mid = (start + end) / 2;
-        Player current = getPlayerAt(players, mid);
-        TreeNode node = new TreeNode(current, current.name); 
-    
-        node.left = buildTeamTree(players, start, mid - 1);
-        node.right = buildTeamTree(players, mid + 1, end); 
-        
-        preOrder(node);
-        return node;
-    }
-    
-    Player getPlayerAt(LinkedList players, int index) {
-        Player current = players.head;
-        int count = 0;
-        while (current != null) {
-            if (count == index) return current;
-            current = current.next;
-            count++;
-        }
-        return null;
-    }
 
+    // niatnya untuk menampilkan team di matchmaking
     public void preOrder(TreeNode root){
         if (root == null) return;
         System.out.println("TEAM :");
