@@ -44,16 +44,15 @@ class Game {
 
         if (action == 1) {
             // Serang
-            int damage = attacker.Level * 2;
-            defender.currentHP -= damage; //Ngurangin HP def
+            int damage = attacker.Level * 2; //ardi
+            defender.currentHP -= damage; 
             System.out.println(attacker.name + " menyerang " + defender.name + " dan memberikan damage " + damage);
             System.out.println(defender.name + " HP tersisa: " + defender.currentHP);
 
-            // buat Cek def kalah
             if (defender.currentHP <= 0) {
                 return true; 
             }
-        } else if (action == 2) {
+        } else if (action == 2) { //ardi
             // Bertahan
             System.out.println(attacker.name + " memilih untuk bertahan.");
         } else {
