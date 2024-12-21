@@ -322,7 +322,8 @@ public class Dashboard {
             System.out.println();
             System.out.println("[1] Masuk ke Matchmaking");
             System.out.println("[2] Lihat Statistik");
-            System.out.println("[3] Exit");
+            System.out.println("[3] Leaderboard");
+            System.out.println("[4] Exit");
             System.out.println();
             System.out.print("Pilih opsi: ");
             int pilih = scanner.nextInt();
@@ -332,7 +333,7 @@ public class Dashboard {
                     clearScreen();
                     banner();
                     TeamTree newTeam = new TeamTree();
-                    newTeam.formTeam(player, playerList, newQueue);
+                    // newTeam.formTeam(player, playerList, newQueue);
                     break;
                 case 2:
                     clearScreen();
@@ -369,6 +370,14 @@ public class Dashboard {
                     }
                     break;
                 case 3:
+                    MatchmakingSort sorting = new MatchmakingSort();
+                    TeamTree leaderboardTree = sorting.linearSearchByLevel(playerList, player.Level);
+
+                    if (leaderboardTree != null) {
+                        leaderboardTree.displayLeaderboardAscending();
+                        leaderboardTree.displayLeaderboardDescending();
+                    }
+                case 4:
                     System.out.println("Keluar dari Menu Utama.");
                     backToDashboard = true;
                     break;
