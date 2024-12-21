@@ -77,14 +77,7 @@ public class MatchmakingSort {
         return teams;
     }
 
-    public LinkedList formTeams(LinkedList teamA, Player player, Queue teams) {
-        teamA.displayPlayers();
-        while (player != null) {
-            teamA.addPlayer(player);
-            player = player.next; 
-        }
-        return teamA;
-    }
+    
     
     private static int getSize(LinkedList list) {
         int size = 0;

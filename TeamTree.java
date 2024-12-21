@@ -18,14 +18,13 @@ public class TeamTree {
     
     public void formTeam(Player player, LinkedList list, Queue playersQueue) {
         MatchmakingSort sorting = new MatchmakingSort();
-        LinkedList teamA = new LinkedList();
+        // LinkedList teamA = new LinkedList();
         playersQueue.enqueue(player);
         System.out.println(player.name);
         Queue teams = new Queue();
         System.out.println("Menunggu pemain lain...");
         // untuk membentuk team dengan level yang sama
-        sorting.linearSearchByLevel(teams, player, list, player.Level);
-        sorting.formTeams(teamA, player, teams);
+        sorting.linearSearchByLevel(teams, player, list, player.Level);     
     }
 
 

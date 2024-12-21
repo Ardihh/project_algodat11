@@ -25,6 +25,7 @@ public class LinkedList {
         return false;
     }
     void addPlayer(Player player) {
+        if (player == null) return;
         if (head == null) {
             head = player;
         } else {
