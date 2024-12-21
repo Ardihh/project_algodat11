@@ -9,8 +9,16 @@ public class Dashboard {
     int choice = 0;
 
     public void banner() {
-        System.out.println("=====================(Welcome To SkillSync)======================");
-        System.out.println();
+        System.out.println("\r\n" + //
+                        "███████╗██╗  ██╗██╗██╗     ██╗     ███████╗██╗   ██╗███╗   ██╗ ██████╗\r\n" + //
+                        "██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝╚██╗ ██╔╝████╗  ██║██╔════╝\r\n" + //
+                        "███████╗█████╔╝ ██║██║     ██║     ███████╗ ╚████╔╝ ██╔██╗ ██║██║     \r\n" + //
+                        "╚════██║██╔═██╗ ██║██║     ██║     ╚════██║  ╚██╔╝  ██║╚██╗██║██║     \r\n" + //
+                        "███████║██║  ██╗██║███████╗███████╗███████║   ██║   ██║ ╚████║╚██████╗\r\n" + //
+                        "╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝\r\n" + //
+                        "                                                                      \r" + //
+                        "");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     public void clearScreen() {
@@ -202,7 +210,8 @@ public class Dashboard {
     }
 
     public void registrasi(LinkedList playerList) {
-        System.out.println("=====================(Sign Up)======================");
+        banner();
+        System.out.println("Sign up menu");
         System.out.println();
         System.out.print("Masukkan Nama: ");
         String name = scanner.nextLine();
@@ -219,8 +228,8 @@ public class Dashboard {
     }
 
     public void login(LinkedList playerList) {
-        System.out.println("=====================(Log In)======================");
-        System.out.println();
+        banner();
+        System.out.println("Login menu");
         System.out.print("Nama: ");
         String name = scanner.nextLine();
         System.out.print("Password: ");
@@ -308,9 +317,8 @@ public class Dashboard {
         newQueue.enqueue(s);
         newQueue.enqueue(t);
         while (!backToDashboard) {
-            // clearScreen();
-            System.out.println("=====================(Main Menu)======================");
-            System.out.println(player.name);
+            clearScreen();
+            banner();
             System.out.println();
             System.out.println("[1] Masuk ke Matchmaking");
             System.out.println("[2] Lihat Statistik");
@@ -321,12 +329,15 @@ public class Dashboard {
             scanner.nextLine();
             switch (pilih) {
                 case 1:
+                    clearScreen();
+                    banner();
                     TeamTree newTeam = new TeamTree();
                     newTeam.formTeam(player, playerList, newQueue);
                     break;
                 case 2:
                     clearScreen();
-                    System.out.println("=====================(Player Statistic)======================");
+                    banner();
+                    System.out.println(player.name + " statistic!");
                     System.out.println();
                     switch (choice) {
                         case 1:
@@ -345,7 +356,6 @@ public class Dashboard {
                             ranger();
                             break;
                     }
-                    System.out.println("[+]-------------------------------------------------------[+]\n");
                     System.out.println("Email              : " + player.email);
                     System.out.println("Nama               : " + player.name);
                     System.out.println("Role               : " + player.role);
@@ -361,7 +371,6 @@ public class Dashboard {
                 case 3:
                     System.out.println("Keluar dari Menu Utama.");
                     backToDashboard = true;
-                    clearScreen();
                     break;
                 default:
                     System.out.println("Pilihan tidak valid.");

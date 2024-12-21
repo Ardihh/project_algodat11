@@ -9,6 +9,7 @@ public class Main {
         playerList.addPlayer(new Player("ardi", "m.rizkijuniardi24@gmail.com", "123", "Warrior", 4));
         while (running) {
             menuDashboard.banner();
+            System.out.println("\nMain menu:");
             System.out.println("[1] Registrasi");
             System.out.println("[2] Login");
             System.out.println("[3] Exit");
