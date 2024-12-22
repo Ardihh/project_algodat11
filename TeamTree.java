@@ -1,10 +1,11 @@
+
 public class TeamTree {
     class TreeNode{
-        Player captain;
+        Player player;
         TreeNode left, right;
     
-        TreeNode(Player captain) {
-            this.captain = captain;
+        TreeNode(Player player) {
+            this.player = player;
             left = right = null;
         }
     }
@@ -14,69 +15,33 @@ public class TeamTree {
         this.root = null;
     }
     
-    public void insert (Player captain) {
-        root = insertRecursive(root, captain);
+    public void insert (Player player) {
+        root = insertRec(root, player);
     }
 
-    private TreeNode insertRecursive (TreeNode node, Player captain) {
-        if (node == null) {
-            return new TreeNode(captain);
+    private TreeNode insertRec(TreeNode root, Player player){
+        if (root == null) {
+            return new TreeNode(player);
         }
-
-        if (captain.Level <= node.captain.Level) {
-            node.left = insertRecursive(node.left, captain);
+        if (player.Level > root.player.Level) {
+            root.left = insertRec(root.left, player);
         } else {
-            node.right = insertRecursive(node.right, captain);
+            root.right = insertRec(root.right, player);
         }
-
-        return node;
+        return root;
     }
 
-    // traversal inorder untuk mencetak leaderboard (ascending)
-    private void printLeaderboardAscending(TreeNode node) {
-        if (node != null) {
-            printLeaderboardAscending(node.left);
-            System.out.println("Captain: " + node.captain.name + ", Level " + node.captain.Level);
-            printLeaderboardAscending(node.right);
+    public void displayLeaderboard() {
+        System.out.println("Leaderboard: ");
+        displayinOrder(root);
+    }
+
+    private void displayinOrder(TreeNode root) {
+
+        if (root != null) {
+            displayinOrder(root.left);
+            System.out.println("[] " + root.player.name + " - Level: " + root.player.Level);
+            displayinOrder(root.right);
         }
-    }
-    
-    public void displayLeaderboardAscending() {
-        System.out.println("Leaderboard (Ascending):");
-        printLeaderboardAscending(root);
-    }
-
-    // traversal reverse inorder untuk mencetak leaderboard (descending)
-    private void printLeaderboardDescending(TreeNode node) {
-        if (node != null) {
-            printLeaderboardDescending(node.right);
-            System.out.println("Captain: " + node.captain.name + ", Level: " + node.captain.Level);
-            printLeaderboardDescending(node.left);
-        }
-    }
-
-    public void displayLeaderboardDescending() {
-        System.out.println("Leaderboard (Descending):");
-        printLeaderboardDescending(root);
-    }
-
-    // public void formTeam(Player player, LinkedList list, Queue playersQueue) {
-    //     MatchmakingSort sorting = new MatchmakingSort();
-    //     // LinkedList teamA = new LinkedList();
-    //     playersQueue.enqueue(player);
-    //     System.out.println(player.name);
-    //     Queue teams = new Queue();
-    //     System.out.println("Menunggu pemain lain...");
-    //     // untuk membentuk team dengan level yang sama
-    // }
-
-
-    // niatnya untuk menampilkan team di matchmaking
-    public void preOrder(TreeNode root){
-        if (root == null) return;
-        System.out.println("TEAM :");
-        preOrder(root.left);
-        preOrder(root.right);
-        return;
     }
 }

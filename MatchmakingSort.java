@@ -1,5 +1,6 @@
+import java.util.Scanner;
 public class MatchmakingSort {
-    public static void bubbleSort(LinkedList list) {
+    public void bubbleSort(LinkedList list) {
         if (list.head == null) return;
 
         boolean swapped;
@@ -8,10 +9,11 @@ public class MatchmakingSort {
             Player current = list.head;
             while (current.next != null) {
                 if (current.Level > current.next.Level) {
-
+                    // Swap all fields
                     int tempLevel = current.Level;
                     current.Level = current.next.Level;
                     current.next.Level = tempLevel;
+
                     String tempName = current.name;
                     current.name = current.next.name;
                     current.next.name = tempName;
@@ -35,67 +37,86 @@ public class MatchmakingSort {
         } while (swapped);
     }
 
-    public TeamTree linearSearchByLevel(LinkedList list, int level) {
-        TeamTree teamTree = new TeamTree();
-
-        if (list == null || list.isEmpty()) {
+    public Queue linearSearchByLevel(Queue antrian, LinkedList list, int level) {
+        if (list == null || list.head == null) {
             System.out.println("Daftar pemain kosong.");
             return null;
         }
 
-        Player current = list.head;
-        while (!list.isEmpty()) {
-            if (current.Level == level - 1 || current.Level == level || current.Level == level + 1) {
-                teamTree.insert(current);
+        Player current = list.head.next;
+        boolean found = false;
+        while (current != null) {
+            if (current.Level == level || current.Level == level - 1 || current.Level == level + 1) {
+                found = true;
+                antrian.enqueue(current);
+            }
+            current = current.next;
+        }
+        if (!found) {
+            System.out.println("Tidak ada pemain dengan level " + level);
+        }
+        return antrian;
+    }
+
+    public void tampilkanTeam(LinkedList playerList, int level, Queue antrianPemain) {
+        Scanner scanner = new Scanner(System.in);
+        Dashboard baru = new Dashboard();
+        bubbleSort(playerList);
+        UndoRedo stackPlayer = new UndoRedo();
+        linearSearchByLevel(antrianPemain, playerList, level);
+        int num = 0;
+        while (true) {
+            baru.clearScreen();
+            baru.banner();
+            System.out.println("\nPencarian pemain dengan level " + level + ":");
+            antrianPemain.displayQueue();
+            System.out.print("Masukkan nama: ");
+            String nama = scanner.nextLine();
+            if (antrianPemain.findNode(nama)){
+                Player current = playerList.findByName(nama);
+                stackPlayer.push(current);
+                antrianPemain.dequeueByName(current);
+            } else {
+                System.out.println("Masukkan nama yang ada pada daftar!");
+                System.out.print("Masukkan nama: ");
+                nama = scanner.nextLine();
+                if(!antrianPemain.findNode(nama)) return;
+                scanner.close();
+            }
+            num++;
+            if (num >= 3) {
+                System.out.println("Team anda:");
+                stackPlayer.display();
+                System.out.print("Lanjutkan?(y/n) ");
+                String aksi = scanner.nextLine();
+                if (aksi.equalsIgnoreCase("y")) {
+                    return;
+                } else if (aksi.equalsIgnoreCase("n")) {
+                    System.out.print("Pilih nama player untuk diganti: ");
+                    nama = scanner.nextLine();
+                    if (antrianPemain.findNode(nama)) {
+                        Player current = playerList.findByName(nama);
+                        stackPlayer.pop(current);
+                        antrianPemain.enqueueByName(current);
+                    }
+                }
             }
         }
-        System.out.println("Tim berhasil dibentuk!");
-        return teamTree;
     }
 
-    // public static Player binarySearchByLevel(LinkedList list, int level) {
-    //     if (list.head == null) return null;
-    //     int size = getSize(list);
-    //     int left = 0;
-    //     int right = size - 1;
-    
-    //     while (left <= right) {
-    //         int mid = left + (right - left) / 2;
-    //         Player midPlayer = getNodeAtIndex(list, mid);
-    
-    //         if (midPlayer.Level == level) {
-    //             return midPlayer; 
-    //         }
-    
-    //         if (midPlayer.Level > level) {
-    //             right = mid - 1; 
-    //         } else {
-    //             left = mid + 1; 
-    //         }
-    //     }
-    //     System.out.println();
-    //     return null; 
-    // }
-    
-    // private static int getSize(LinkedList list) {
-    //     int size = 0;
-    //     Player current = list.head;
-    //     while (current != null) {
-    //         size++;
-    //         current = current.next;
-    //     }
-    //     return size;
-    // }
+    public void playMatch(Queue teams, Queue team) {
+        int totalteams = teams.getTotalLevel();
+        int totalteam = team.getTotalLevel();
 
-    // private static Player getNodeAtIndex(LinkedList list, int index) {
-    //     Player current = list.head;
-    //     for (int i = 0; i < index; i++) {
-    //         current = current.next;
-    //     }
-    //     return current;
-    // }
-    
-    public void bubblesort(LinkedList playerList) {
-        bubbleSort(playerList);
+        if (totalteam > totalteams) {
+            System.out.println("Winner:");
+            team.displayQueue();
+        } else if (totalteam < totalteams) {
+            System.out.println("Winner:");
+            team.displayQueue();
+        } else {
+            System.out.println("The match is a draw!");
+        }
     }
+    
 }

@@ -4,7 +4,6 @@ class Player {
     String password;
     String role;
     int Level;
-    int currentHP;
     int totalMain; 
     int wins; 
     Player next;
@@ -15,7 +14,6 @@ class Player {
         this.password = password;
         this.role = role;
         this.Level = Level;
-        this.currentHP = Level * 10;
         this.totalMain = 0;
         this.wins = 0;
         this.next = null;

@@ -6,7 +6,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
         LinkedList playerList = new LinkedList();
-        playerList.addPlayer(new Player("ardi", "m.rizkijuniardi24@gmail.com", "123", "Warrior", 4));
+        //akun admin
+        Player admin = new Player("ardi", "ardi@gmail.com", "123", "Warrior", 1);
+        playerList.addPlayer(admin);
         while (running) {
             menuDashboard.banner();
             System.out.println("\nMain menu:");

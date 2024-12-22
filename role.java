@@ -99,8 +99,6 @@ public class role {
                 "\t\t          %-        \r\n" + //
                 "\t\t          %:        \r\n" + //
                 "\t\t          #:        \r\n" + //
-                "\t\t          #:        \r\n" + //
-                "\t\t          %-        \r\n" + //
                 "\t\t          %-        \r\n" + //
                 "\t\t          =:   ");
         System.out.println("   Healer atau support yang bertugas menjaga \n" +
@@ -113,6 +111,8 @@ public class role {
         System.out.println("[+]==============================================[+]");
         System.out.println(" |                     RANGER                     |");
         System.out.println("[+]==============================================[+]");
+        System.out.println();
+        System.out.println();
         System.out.println("\t\t         *-=+-           \r\n" + //
                 "\t\t         +   -%+         \r\n" + //
                 "\t\t         +     #%.       \r\n" + //
@@ -124,6 +124,9 @@ public class role {
                 "\t\t         =     +@:       \r\n" + //
                 "\t\t         =   :##.        \r\n" + //
                 "\t\t         +:=++.   ");
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("   Damage dealer jarak jauh.");
         bottomNav();
     }

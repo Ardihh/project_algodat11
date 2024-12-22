@@ -59,4 +59,15 @@ public class LinkedList {
             current = current.next;
         }
     }
+
+    public Player findByName(String name) {
+        Player current = head;
+        while (current != null) {
+            if (current.name.equalsIgnoreCase(name)) {
+                return current; 
+            }
+            current = current.next;
+        }
+        return null; 
+    }
 }
