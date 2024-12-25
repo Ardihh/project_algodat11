@@ -129,6 +129,23 @@ class Queue {
             num++;
         }
     }
+
+    public void displayQueue1(Player player) {
+        NodeMatchmaking current = front;
+        int num = 1;
+        if (isEmpty()) {
+            System.out.println("Tidak ada player dalam antrian.");
+        }
+        while (current != null) {
+            if (current.player == player) {
+                current = current.next;
+                continue;
+            }
+            System.out.println(num + ". " + current.player.name + " lvl. " + current.player.Level + ", role " + current.player.role);
+            current = current.next;
+            num++;
+        }
+    }
     
 
     public boolean findNode(String nama) {

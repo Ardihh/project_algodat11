@@ -26,13 +26,22 @@ class UndoRedo {
         return jumlah;
     }
 
+    public boolean isEmpty() {
+        if (top == null) {
+            System.out.println("Stack kosong.");
+            return true;
+        }
+        return false;
+    }
+    
+
     public void push (Player player) {
         Node newNode = new Node(player); 
         newNode.next = top;
         top = newNode;
     }
 
-    public Player pop (Player player) {
+    public Player pop(Player player) {
         if (top == null) {
             System.out.println("Tim kosong");
             return null;
@@ -40,6 +49,17 @@ class UndoRedo {
         top = top.next;
         return player;
     }
+
+    public Player popbaru() {
+        if (top == null) {
+            System.out.println("Tim kosong");
+            return null;
+        }
+        Player poppedPlayer = top.player; 
+        top = top.next; 
+        return poppedPlayer; 
+    }
+    
 
     public void display() {
         if (top == null) return;

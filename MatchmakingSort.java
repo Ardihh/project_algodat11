@@ -37,7 +37,6 @@ public class MatchmakingSort {
             System.out.println("Daftar pemain kosong.");
             return null;
         }
-
         Player current = list.head;
         boolean found = false;
         while (current != null) {
@@ -53,21 +52,20 @@ public class MatchmakingSort {
         return antrian;
     }
 
-    public void tampilkanTeam(Player player, LinkedList playerList, int level, Queue antrianPemain) {
+    public Queue tampilkanTeam(Player player, LinkedList playerList, int level, Queue antrianPemain) {
         Scanner scanner = new Scanner(System.in);
         Dashboard baru = new Dashboard();
         UndoRedo stackPlayer = new UndoRedo();
         bubbleSort(playerList);
-        playerList.findByName(player.name);
-        stackPlayer.push(player);
-        antrianPemain.dequeueByName(player);
+        antrianPemain.enqueue(player);
         linearSearchByLevel(antrianPemain, playerList, level);
+        stackPlayer.push(player);
         int num = 1;
         while (true) {
             baru.clearScreen();
             baru.banner();
             System.out.println("\nPencarian pemain dengan level " + level + ":");
-            antrianPemain.displayQueue();
+            antrianPemain.displayQueue1(player);
             System.out.print("Masukkan nama: ");
             String nama = scanner.nextLine();
             if (antrianPemain.findNode(nama)){
@@ -78,7 +76,7 @@ public class MatchmakingSort {
                 System.out.println("Masukkan nama yang ada pada daftar!");
                 System.out.print("Masukkan nama: ");
                 nama = scanner.nextLine();
-                if(!antrianPemain.findNode(nama)) return;
+                if(!antrianPemain.findNode(nama)) return null;
                 scanner.close();
             }
             num++;
@@ -88,7 +86,15 @@ public class MatchmakingSort {
                 System.out.print("Lanjutkan?(y/n) ");
                 String aksi = scanner.nextLine();
                 if (aksi.equalsIgnoreCase("y")) {
-                    return;
+                    while (!antrianPemain.isEmpty()) {
+                        antrianPemain.dequeue();
+                    }
+                    Player current = null;
+                    while (!stackPlayer.isEmpty()) {
+                        current = stackPlayer.popbaru();
+                        antrianPemain.enqueueByName(current);
+                    }
+                    return antrianPemain;
                 } else if (aksi.equalsIgnoreCase("n")) {
                     System.out.print("Pilih nama player untuk diganti: ");
                     nama = scanner.nextLine();
@@ -110,7 +116,7 @@ public class MatchmakingSort {
         team.displayQueue();
         System.out.println();
         if (totalteam > totalteams) {
-            System.out.println("Kalah karena power anda " + totalteam);
+            System.out.println("Kalah karena power anda " + totalteams);
         } else if (totalteam < totalteams) {
             System.out.println("Menang dengan power " + totalteams);
             player.wins++;

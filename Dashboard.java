@@ -10,14 +10,14 @@ public class Dashboard {
 
     public void banner() {
         System.out.println("\r\n" + //
-                        "███████╗██╗  ██╗██╗██╗     ██╗     ███████╗██╗   ██╗███╗   ██╗ ██████╗\r\n" + //
-                        "██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝╚██╗ ██╔╝████╗  ██║██╔════╝\r\n" + //
-                        "███████╗█████╔╝ ██║██║     ██║     ███████╗ ╚████╔╝ ██╔██╗ ██║██║     \r\n" + //
-                        "╚════██║██╔═██╗ ██║██║     ██║     ╚════██║  ╚██╔╝  ██║╚██╗██║██║     \r\n" + //
-                        "███████║██║  ██╗██║███████╗███████╗███████║   ██║   ██║ ╚████║╚██████╗\r\n" + //
-                        "╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝\r\n" + //
-                        "                                                                      \r" + //
-                        "");
+                "███████╗██╗  ██╗██╗██╗     ██╗     ███████╗██╗   ██╗███╗   ██╗ ██████╗\r\n" + //
+                "██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝╚██╗ ██╔╝████╗  ██║██╔════╝\r\n" + //
+                "███████╗█████╔╝ ██║██║     ██║     ███████╗ ╚████╔╝ ██╔██╗ ██║██║     \r\n" + //
+                "╚════██║██╔═██╗ ██║██║     ██║     ╚════██║  ╚██╔╝  ██║╚██╗██║██║     \r\n" + //
+                "███████║██║  ██╗██║███████╗███████╗███████║   ██║   ██║ ╚████║╚██████╗\r\n" + //
+                "╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝ ╚═════╝\r\n" + //
+                "                                                                      \r" + //
+                "");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
@@ -189,15 +189,15 @@ public class Dashboard {
             if (getAction.equalsIgnoreCase("yes")) {
                 switch (index) {
                     case 1:
-                    return "Warrior";
+                        return "Warrior";
                     case 2:
-                    return "Mage";
+                        return "Mage";
                     case 3:
-                    return "Rogue";
+                        return "Rogue";
                     case 4:
-                    return "Cleric";
+                        return "Cleric";
                     case 5:
-                    return "Ranger";
+                        return "Ranger";
                 }
             } else if (getAction.equalsIgnoreCase("A")) {
                 index = (index == 1) ? 5 : index - 1;
@@ -248,13 +248,18 @@ public class Dashboard {
 
     public void menuUtama(Player player, LinkedList playerList) {
         boolean backToDashboard = false;
-        if (player.role.equalsIgnoreCase("Warrior")) choice = 1;
-        else if (player.role.equalsIgnoreCase("Mage")) choice = 2;
-        else if (player.role.equalsIgnoreCase("Rogue")) choice = 3;
-        else if (player.role.equalsIgnoreCase("Cleric")) choice = 4;
-        else if (player.role.equalsIgnoreCase("Ranger")) choice = 5;
-        //buat team random
-        //akun team yang akan dilawan user
+        if (player.role.equalsIgnoreCase("Warrior"))
+            choice = 1;
+        else if (player.role.equalsIgnoreCase("Mage"))
+            choice = 2;
+        else if (player.role.equalsIgnoreCase("Rogue"))
+            choice = 3;
+        else if (player.role.equalsIgnoreCase("Cleric"))
+            choice = 4;
+        else if (player.role.equalsIgnoreCase("Ranger"))
+            choice = 5;
+        // buat team random
+        // akun team yang akan dilawan user
         Queue teamA = new Queue();
         Player mod = new Player("moderator", "mod@gmail.com", "1234", "Mage", 2);
         Player user1 = new Player("johnDoe", "johndoe@example.com", "password123", "Warrior", 1);
@@ -267,8 +272,8 @@ public class Dashboard {
         teamA.enqueue(mod);
         Queue teamB = new Queue();
         Player gamer1 = new Player("gamerBoy", "gamerboy@games.com", "gamer123", "Rogue", 5);
-        Player proPlayer = new Player("proGamer", "progamer@pro.com", "pro123", "Mage", 10);
-        Player newbie = new Player("newbie123", "newbie@example.com", "newbie123", "Warrior", 1);
+        Player proPlayer = new Player("proGamer", "progamer@pro.com", "pro123", "Mage", 4);
+        Player newbie = new Player("newbie123", "newbie@example.com", "newbie123", "Warrior", 4);
         playerList.addPlayer(proPlayer);
         playerList.addPlayer(gamer1);
         playerList.addPlayer(newbie);
@@ -277,8 +282,8 @@ public class Dashboard {
         teamB.enqueue(newbie);
         Queue teamC = new Queue();
         Player veteran = new Player("veteranGamer", "veterangamer@veteran.com", "veteran123", "Cleric", 15);
-        Player player8 = new Player("coolDude", "cooldude@example.com", "cooldude123", "Ranger", 7);
-        Player player9 = new Player("girlGamer", "girlgamer@girlgames.com", "girlgamer123", "Rogue", 4);
+        Player player9 = new Player("girlGamer", "girlgamer@girlgames.com", "girlgamer123", "Rogue", 16);
+        Player player8 = new Player("coolDude", "cooldude@example.com", "cooldude123", "Ranger", 14);
         playerList.addPlayer(player9);
         playerList.addPlayer(player8);
         playerList.addPlayer(veteran);
@@ -286,9 +291,9 @@ public class Dashboard {
         teamC.enqueue(player8);
         teamC.enqueue(veteran);
         Queue teamD = new Queue();
-        Player player10 = new Player("speedRun", "speedrun@speed.com", "speed123", "Warrior", 12);
+        Player player10 = new Player("speedRun", "speedrun@speed.com", "speed123", "Warrior", 2);
         Player casual = new Player("casualGamer", "casualgamer@casual.com", "casual123", "Mage", 3);
-        Player hardcore = new Player("hardcoreGamer", "hardcoregamer@hardcore.com", "hardcore123", "Cleric", 20);
+        Player hardcore = new Player("hardcoreGamer", "hardcoregamer@hardcore.com", "hardcore123", "Cleric", 4);
         playerList.addPlayer(player10);
         playerList.addPlayer(casual);
         playerList.addPlayer(hardcore);
@@ -297,8 +302,8 @@ public class Dashboard {
         teamD.enqueue(hardcore);
         Queue teamE = new Queue();
         Player playerGG = new Player("noobSlayer", "noobslayer@noob.com", "noob123", "Ranger", 9);
-        Player player14 = new Player("proNewbie", "pronewbie@pronewbie.com", "pronewbie123", "Rogue", 6);
-        Player player15 = new Player("legendGamer", "legendgamer@legend.com", "legend123", "Warrior", 25);
+        Player player14 = new Player("proNewbie", "pronewbie@pronewbie.com", "pronewbie123", "Rogue", 10);
+        Player player15 = new Player("legendGamer", "legendgamer@legend.com", "legend123", "Warrior", 11);
         playerList.addPlayer(playerGG);
         playerList.addPlayer(player14);
         playerList.addPlayer(player15);
@@ -348,7 +353,6 @@ public class Dashboard {
         playerList.addPlayer(p18);
         playerList.addPlayer(p19);
         playerList.addPlayer(p20);
-        int count = 1;
         while (!backToDashboard) {
             clearScreen();
             banner();
@@ -374,12 +378,11 @@ public class Dashboard {
                     clearScreen();
                     banner();
                     sorting.playMatch(player, teams, teamLawan);
-                    count++;
                     getAction = scanner.nextLine();
                     if (getAction == "\n") {
                         menuUtama(player, playerList);
                     }
-                    player.totalMain += count;
+                    player.totalMain++;
                     break;
                 case 2:
                     System.out.println(player.name + " statistic!");
@@ -401,6 +404,7 @@ public class Dashboard {
                             ranger();
                             break;
                     }
+                    System.out.println();
                     System.out.println("Email              : " + player.email);
                     System.out.println("Nama               : " + player.name);
                     System.out.println("Role               : " + player.role);
