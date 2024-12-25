@@ -212,8 +212,8 @@ public class Dashboard {
     public void registrasi(LinkedList playerList) {
         clearScreen();
         banner();
-        System.out.println("Sign up menu");
         System.out.println();
+        System.out.println("Sign up menu");
         System.out.print("Masukkan Nama: ");
         String name = scanner.nextLine();
         System.out.print("Masukkan Email: ");
@@ -370,9 +370,10 @@ public class Dashboard {
                     Queue teams = new Queue();
                     RandomQueueSelector pick = new RandomQueueSelector(teamA, teamB, teamC, teamD, teamE);
                     Queue teamLawan = pick.getRandomQueue();
-                    sorting.tampilkanTeam(playerList, player.Level, teams);
-                    teamLawan.displayQueue();
-                    sorting.playMatch(teams, teamLawan);
+                    sorting.tampilkanTeam(player, playerList, player.Level, teams);
+                    clearScreen();
+                    banner();
+                    sorting.playMatch(player, teams, teamLawan);
                     count++;
                     getAction = scanner.nextLine();
                     if (getAction == "\n") {

@@ -7,7 +7,7 @@ public class Main {
         boolean running = true;
         LinkedList playerList = new LinkedList();
         //akun admin
-        Player admin = new Player("ardi", "ardi@gmail.com", "123", "Warrior", 1);
+        Player admin = new Player("ardi", "ardi@gmail.com", "123", "Warrior", 5);
         playerList.addPlayer(admin);
         while (running) {
             menuDashboard.banner();
